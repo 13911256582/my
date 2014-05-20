@@ -1,0 +1,145 @@
+<div id="container">
+<%= render '/mydevices/header' %>
+
+<%= render '/mydevices/nav' %>
+
+<div class="content">
+
+  <h2> 创建新设备类型 </h2>
+  
+  <div class="steps">
+	<p class="devicetype">步骤1：输入设备名称</p>
+	<p>&nbsp;</p>
+	<p><input class="devicetype" id="device_name" type="text"></p>
+  </div>
+  
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+  
+  <div class="steps">
+	<p class="devicetype">步骤2：给设备添加数据类型，可以尝试查询现有的数据类型，或者创建新的数据类型</p>
+	<p>&nbsp;</p>
+	<p><input class="devicetype" id="data_name" type="text">
+	<input class="button" id="search" type="button" value="search">
+	<input class="button" id="create" type="button" value="create"></p>
+  </div>
+  
+   <p>&nbsp;</p>
+   <p>&nbsp;</p>
+  
+  <div class="steps">
+  <table id="data_item">
+  </table>
+  </div>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+  
+  <div class="steps"> 
+  <p class="devicetype">步骤3：确认新设备的数据类型</p>
+	<table>
+		<thead style="display: ">
+		<tr style="background-color: grey">
+			<td>数据项ID</td>
+			<td>数据项</td>
+			<td>单位</td>
+			<td>数据类型</td>
+			<td>数据精度</td>
+			<td>操作</td>
+		</tr>
+		</thead>
+		<tbody id="data">
+		<tr>
+		</tr>
+		</tbody>	
+	</table>
+  </div>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	
+	<div class="steps">
+		<p class="devicetype">步骤4：</p>
+		<p><input id="submit" type="button" value="创建新设备"></p>
+	</div>
+
+</div>
+
+
+<%= render '/mydevices/footer' %>
+</div>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function(){
+	$("#search").click(function(){
+	
+		$("#data_item").empty();
+	
+		var URL = "http://localhost:3000/metrics/";
+		URL += $("#data_name").val() + "/search.json";
+		alert(URL);
+		
+		$.getJSON(URL, {}, function(response, status,xhr)
+		{	
+			$("#data_item").append("<tr style='background-color: grey'><td>数据项ID</td><td>数据项</td><td>单位</td><td>数据类型</td><td>数据精度</td><td>操作</td></tr>");
+
+			$.each(response, function(i){
+				$("#data_item").append( "<tr><td class='metricID'>" +response[i].id + "</td><td>" + response[i].name + "</td><td>" + response[i].unit + "</td><td>" + 
+				response[i].type + "</td><td>" + response[i].precision + "</td><td><input type='button' class='add_data' value='添加'></td></tr>");
+				});
+		});
+	});
+	
+	$("#create").click(function(){
+		var URL = "http://localhost:3000/metrics/new";
+		
+		var metricWin = window.open(URL, 'newwindow','height=500,width=1000,top=200,left=300,toolbar=no,menubar=no');
+		
+	});
+	
+	$("#submit").click(function(){
+		
+		var str = '{"devTypeName":"' + $("#device_name").val() + '",'  + '"metrics":';
+		
+		var objMetrics = [];
+		//将#data项下的所有metricID填入需要submit的项中		   
+		$("#data").find(".metricID").each(function(){
+			objMetrics.push({'metricID': $(this).text()});
+		});
+		
+		//var str = "{'devTypeName': 'test', 'metrics': [{'name':'temp', 'type':'float', 'precision':'0.1'}, {'name':'temp2', 'type':'float', 'precision':'1'}]}";
+		var dtStr = str + JSON.stringify(objMetrics) + "}";
+		alert(dtStr);
+		var objstr = eval('(' + dtStr + ')'); 
+		
+		$.ajaxSetup({ 
+				async : false 
+		});  
+		
+		$.post("http://localhost:3000/devicetypes.json", objstr, function(data){
+				alert(JSON.stringify(data));
+				window.location.href="http://localhost:3000/devicetypes/" + data["id"];
+		})
+		.error(function() { alert("创建错误，重新创建"); });
+	});	
+	
+});
+
+$(document).on('click', 'input.add_data', function(){
+	var Obj = $(this).parents('tr');
+	$("#data").append("<tr>" + Obj.html() + "</tr>");
+	$("#data").find("input").attr("class", "del");
+	$("#data").find("input").attr("value", "delete");
+});
+
+$(document).on('click', 'input.del', function(){
+       $(this).parents('tr').remove();
+});
+
+
+
+</script>  
+
+

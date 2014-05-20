@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @devicetype.name %>
+</p>
+
+
+<p>
+  <b>Metrics</b>
+  <% @devicetype.metrics.each do |metric| %>
+  <%= metric %>
+  <b>Name</b>
+  <%= Metric.find(metric).name %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_devicetype_path(@devicetype) %> 

@@ -1,0 +1,101 @@
+<html>
+<body>
+<form id=\"form1\" runat=\"server\">
+<div style=\"border:solid 1px black; width:400px;padding:100px; \">
+<br />
+<input type=\"text\" id=\"text1\" /><br />
+<input   type= \"button\" id=\"btnShow\" value=\"显示\" onclick=\"showPopup(’text1’,20)\"/>
+<input type=\"button\" id=\"btnClose\" value=\"隐藏\" onclick=\"removeDiv()\"/>
+     &nbsp;
+</div>
+</form>
+</body>
+</html>
+
+<script language=\"JavaScript\" type=\"text/javascript\">
+// JScript 文件
+/////////
+///DIV实现popup
+/////////
+
+///显示popup
+///controlID表示要在它上面创建popup的ID
+///height表示你所要创建的高度
+function showPopup(controlID,height)
+{
+     var objControl = document.getElementById(controlID);
+     var width = objControl.offsetWidth; //定义创建DIV的宽度
+     //var top = calculateOffset(objControl, \"offsetTop\")-height-1;
+     //var left = calculateOffset(objControl, \"offsetLeft\");//
+     var r = getAbsolutePos(objControl);
+     var top = r.y-height;
+     var left = r.x;
+//   var widthGap = objControl.parentNode.offsetWidth - objControl.parentNode.clientWidth;
+//   var heightGap = objControl.parentNode.offsetHeight - objControl.parentNode.clientHeight;
+     var objDiv = createDiv(top, left, width, height);
+     objDiv.innerHTML=\"perfect life!\";
+     objControl.parentNode.appendChild(objDiv);
+
+}
+//计算字段的相对于html的偏移量(offsetTop和offsetLeft)
+// function calculateOffset(field, attr)
+// {
+//   var offset = 0;
+//   while (field)
+//   {    
+//       offset += field[attr];
+//       //alert(field.nodeName);
+//       field = field.offsetParent;
+//        [Page]
+//        
+//   }
+//   return offset;
+// }
+//创建一个DIV对象
+function createDiv(top,left,width,height)
+{
+     var str = \"<div id=’divPopup’ style=’position:absolute;background-color:lightyellow’></div>\";
+     var objDiv = document.createElement(str);
+     //设置DIV的位置、大小和边框
+     objDiv.style.border = \"black 1px solid\";
+     objDiv.style.height = height;
+     objDiv.style.width = width;
+     objDiv.style.top = top;
+     objDiv.style.left = left;
+    
+     //alert(div1.outerHTML);
+     return objDiv;
+}
+//移除DIV
+function removeDiv()
+{
+     //document.forms[0].firstChild.removeChild(document.getElementById(’divPopup’));
+     var divPoppup = document.getElementById(\"divPopup\");
+     if (divPoppup)
+     {
+         divPoppup.parentNode.removeChild(divPoppup);
+     }
+     //document.getElementById(’divPopup’).parentNode.removeChild(document.getElementById(’divPopup’));
+}
+//获取元素的绝对位置
+function getAbsolutePos(el)
+{
+var SL = 0, ST = 0;
+   var is_div = /^div$/i.test(el.tagName);
+   if (is_div && el.scrollLeft)
+    {SL = el.scrollLeft;
+     //alert(SL);
+    }
+   
+   if (is_div && el.scrollTop)
+     ST = el.scrollTop;
+   var r = { x: el.offsetLeft - SL, y: el.offsetTop - ST };
+   if (el.offsetParent)
+   {
+      var tmp = this.getAbsolutePos(el.offsetParent);
+     r.x += tmp.x;
+      r.y += tmp.y;
+   }
+   return r;
+}
+</script> 

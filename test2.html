@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="file:///C:/Users/IBM_ADMIN/workspace/ruby/my/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+ 
+  <p>数据类型</p>
+	<table id="data">
+		<tr>
+			<td>数据项</td>
+			<td>数据类型</td>
+			<td>描述</td>
+		</tr>
+		
+	</table>
+  
+  <br/>
+  
+  <p>添加新数据类型</p>
+  <table>
+	<tr>
+    <td><label>数据项</label></td>
+    <td><input id="data_name" type="text" name="dstemplate[name]"></td>
+	</tr>
+	<tr>
+	<td><label>数据类型</label></td>
+    <td>
+	<select id="data_type" name="dstemplate[type]">
+		<option value="volvo">Volvo</option>
+		<option value="saab">Saab</option>
+		<option value="fiat">Fiat</option>
+		<option value="audi">Audi</option>
+	</select>
+	</td>
+	</tr>
+	<tr>
+	<td><label>描述</label></td>
+    <td><input id="data_comment" type="text" name="dstemplate[comment]"></td>
+	</tr>
+  </table>
+  <input id="add_data" type="button" value="添加数据">
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function(){
+	$("#add_data").click(function(){
+	$("p").append("testing");
+	$("#data").append("<tr>" + 
+						"<td>" + $("#data_name").val() + "</td>" +
+						"<td>" + $("#data_type").val() + "</td>" +
+						"<td>" + $("#data_comment").val() + "</td>" +
+					  "</tr>"
+					  );
+	});
+});
+ </script>
+ 
+ </body>
+ 
+
+</html>

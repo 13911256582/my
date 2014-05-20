@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Serial:</b>
+  <%= @device.serial %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @device.name %>
+</p>
+
+<p>
+  <b>ActivateCod:</b>
+  <%= @device.activateCode %>
+</p>
+
+<p>
+  <b>DeviceType:</b>
+  <%= Devicetype.find(@device.deviceTypeID).name %>
+</p>
+
+<p>
+  <b>SourceId:</b>
+  <%= @device.sourceID %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @device.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_device_path(@device) %>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="container">
+
+
+<div class="content">
+
+<div class="devicetype">
+  <h2> 创建新设备类型 </h2>
+    
+	<label>设备名称:</label>
+    <input id="device_name" type="text">
+  
+  <br>
+  
+  <p>添加新数据类型</p>
+  <table id="data_item">
+	<tr>
+    <td><label>数据项</label></td>
+    <td><input id="data_name" type="text"></td>
+	<td><input id="search" type="button" value="search"></td>
+	</tr>
+
+  </table>
+  <br>
+  <br>
+   
+  <p>数据类型</p>
+
+	<table>
+		<thead>
+		<tr>
+			<td>数据项</td>
+			<td>单位</td>
+			<td>数据类型</td>
+			<td>数据精度</td>
+			<td>操作</td>
+		</tr>
+		</thead>
+		<tbody id="data">
+		<tr>
+			<td>4</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td><input class="del" type="button" value="delete"></td>
+		</tr>
+		</tbody>	
+	</table>
+	<div>
+		<input id="submit" type="button" value="创建新设备">
+	</div>
+
+</div>
+</div>
+
+</div>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function(){
+	$("#search").click(function(){
+		var URL = "http://localhost:3000/metrics/";
+		
+		$.getJSON("http://localhost:3000/metrics/search/temperature.json", {}, function(response, status,xhr)
+		{	
+			$("#data_item").append("<tr><td>数据项</td><td>单位</td><td>数据类型</td><td>数据精度</td><td>操作</td></tr>");
+
+			$.each(response, function(i){
+				$("#data_item").append( "<tr><td>" + response[i].name + "</td><td>" + response[i].unit + "</td><td>" + 
+				response[i].type + "</td><td>" + response[i].precision + "</td><td><input type='button' class='add_data' value='添加'></td></tr>");
+				});
+		});
+	});
+	
+
+	
+	$("#submit").click(function(){
+		var str = {"devicetype": {"name": "xxx", 
+								  "metrics": [
+								  {"name": "abc", "type": "string", "unit": "degree"},
+								  {"name": "abc", "type": "string", "unit": "degree"},
+								  {"name": "abc", "type": "string", "unit": "degree"} ]
+								 }
+				   };
+		
+		$.post("http://localhost:3000/devicetypes", str, function() {
+			alert("success");
+		});	
+	});
+});
+
+$(document).on('click', 'input.add_data', function(){
+	var Obj = $(this).parents('tr');
+	$("#data").append("<tr>" + Obj.html() + "</tr>");
+	$("#data").find("input").attr("class", "del");
+	$("#data").find("input").attr("value", "delete");
+});
+
+$(document).on('click', 'input.del', function(){
+       $(this).parents('tr').remove();
+});
+
+	
+ </script>  
+ </body>
+ </html>
+
+

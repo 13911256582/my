@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("nav");
+for (i=0; i<navRoot.childNodes.length; i++) {
+   node = navRoot.childNodes[i];
+   if (node.nodeName=="li") {
+    node.onmouseover=function() {
+     this.className+=" over";
+    }
+    node.onmouseout=function() {
+     this.className=this.className.replace(" over", "");
+    }
+   }
+}
+}
+}
+window.onload=startList;
+
+//--><!]]>
+</script>
+
+
+
+
+<body>
+<div id="container">
+
+<div class="header">
+<div id="logo">
+	<ul>
+    <li>
+    	<p>D</p>
+    </li>
+    <li>
+  	<h1>搭石网<span>构建便捷、安全、环保的生活</span></h1>
+    </li>
+    </ul>
+</div>
+<div id="head_content">
+	<ul>
+		<li>
+        	<a href="#">首页</a>
+        </li>
+        <li>
+        	<a href="#">产品</a>
+        </li>
+    	<li>
+        	<a href="#">方案</a>
+        </li>
+        <li>
+        	<a href="#">开发</a>
+        </li>
+        <li>
+        	<a href="#">合作伙伴</a>
+        </li>
+        <li>
+        	<a href="#">论坛</a>
+        </li>
+    	
+    </ul>
+</div>
+</div>
+
+<div class="nav">
+<ul id="nav">
+  <li id = "navTop"><p>开发者</p></li>
+  <li><a class="" href="#">系统</a>
+    <ul>
+      <li><a href="#">平台</a></li>
+      <li><a href="#">API</a></li>
+    </ul>
+  </li>
+  <li><a class="" href="#">用户</a>
+  	<ul>
+      <li><a href="#">智能工厂</a></li>
+      <li><a href="#">智能家居</a></li>
+    </ul>
+  </li>
+  <li><a class="" href="#">设备</a>
+  	<ul>
+      <li><a href="#">产品管理</a></li>
+      <li><a href="#">设备管理</a></li>
+    </ul>
+  </li>
+  <li><a class="" href="#">应用</a>
+  	<ul>
+      <li><a href="#">消息</a></li>
+      <li><a href="#">平台</a></li>
+      <li><a href="#">开发者社区</a></li>
+    </ul>
+  </li>
+  <li><a class="" href="#">数据</a>
+  	<ul>
+      <li><a href="#">消息</a></li>
+      <li><a href="#">平台</a></li>
+      <li><a href="#">开发者社区</a></li>
+    </ul>
+  </li>
+  <li><a href="#">资源</a>
+  <ul>
+      <li><a href="#">消息</a></li>
+      <li><a href="#">平台</a></li>
+      <li><a href="#">开发者社区</a></li>
+    </ul>
+  </li>
+  <li><a href="#">工具</a>
+  <ul>
+      <li><a href="#">消息</a></li>
+      <li><a href="#">平台</a></li>
+      <li><a href="#">开发者社区</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+
+
+
+
+<div id="content">
+<a href="#">
+<h2>此处添加图片</h2>
+</a>
+</div>
+
+<div class="footer">
+	<ul class="footer">
+	<li class="footer_top">
+    	<ul>
+        	<h4>关于我们</h4>
+        	<li class="footer">
+            	<a href="#">联系我们</a>
+            </li>
+        </ul>       	
+    </li>
+    <li class="footer_top">
+    	<ul>
+        	<h4>技术支持</h4>
+            <li class="footer">
+            	<a href="#">API文档</a>
+            </li>
+            <li class="footer">
+            	<a href="#">常见问题</a>
+            </li>
+     	</ul>
+    </li>
+    <li class="footer_top">
+        <ul>
+        	<h4>社区</h4>
+            <li class="footer">
+            	<a href="#">用户社区</a>
+            </li>
+            <li class="footer">
+            	<a href="#">开发者社区</a>
+            </li>
+     	</ul>
+      </li>
+    <li class="footer_top">
+        <ul>
+        	<h4>合作伙伴</h4>
+     	</ul>
+      </li>
+     </ul>
+</div>
+</div>
+
+</body>
+</html>

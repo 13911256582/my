@@ -1,0 +1,93 @@
+
+<div id="container">
+<div class="header">
+<ul class="header">
+	<li><a class="header_menu" href="#">首页</a></li>
+	<li><a class="header_menu" href="#">文档</a></li>
+    <li><a class="header_menu" href="#">社区</a></li>
+    <li><a class="header_menu" href="#">退出</a></li>
+</ul>
+</div>
+
+<div class="navi">
+<ul class="menu">
+  <li><a class="menu" href="#"><p>我的设备</p></a></li>
+  <li><a class="menu" href="#"><p>我的空间</p></a></li>
+  <li><a class="menu" href="#"><p>我的应用</p></a></li>
+  <li><a class="menu" href="#"><p>我的数据</p></a></li>
+  <li><a class="menu" href="#"><p>用户信息</p></a></li>
+  <li><a class="menu" href="#"><p>设备类型</p></a></li>
+  <li><a class="menu" href="#"><p>基础服务</p></a></li>
+</ul>
+</div>
+
+<div class="content">
+<h3>用户名: <%= @user.name %></h3>
+
+	<table class="device">
+		<h3>当前设备</h3>
+		<tr class="header">
+			<th>设备名称</th>
+			<th>设备描述</th>
+			<th>操作</th>
+		</tr>
+		<% @user.device.each do |dev| %>
+		<% res=Device.find_by_name(dev)%>
+		<tr class="content">
+		<td><%= res.name %></td>
+		<td><%= res.description %></td>
+		<td><a href="#">删除</td>
+		</tr>
+		<% end %>		
+	</table>
+	<table class="device">
+		<h3>添加设备</h3>
+		<tr class="header">
+			<th>设备名称</th>
+			<th>设备描述</th>
+			<th>操作</th>
+		</tr>
+
+		<% @devices.each do |dev| %>
+		<% unless (@user.device.include?dev.name) then %>
+		<tr class="content">
+		<td><%= dev.name %></td>
+		<td><%= dev.description %></td>
+		<td><a href="#">添加</td>
+		</tr>
+		<% end %>
+		<% end %>	
+		
+	</table>
+</div>
+
+
+<%= link_to 'Show', @mydevice %> |
+<%= link_to 'Back', mydevices_path %>
+<div class="footer">
+	<ul class="footer">
+	<li class="footer_top">
+    	<ul>
+        	<h4>关于我们</h4>
+        	<li class="footer">
+            	<a href="#">联系我们</a>
+            </li>
+        </ul>       	
+    </li>
+    <li class="footer_top">
+    	<ul>
+        	<h4>技术支持</h4>
+            <li class="footer">
+            	<a href="#">API文档</a>
+            </li>
+            <li class="footer">
+            	<a href="#">常见问题</a>
+            </li>
+            <li class="footer">
+            	<a href="#">"..."</a>
+            </li>
+     	</ul>
+      </li>
+     </ul>
+</div>
+</div>

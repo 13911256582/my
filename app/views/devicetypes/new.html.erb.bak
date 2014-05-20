@@ -1,0 +1,85 @@
+
+<div id="container">
+<%= render '/mydevices/header' %>
+
+<div class="content">
+
+<form accept-charset="UTF-8" action="/devices" class="new_device" id="new_device" method="post">
+<div class="devicetype">
+  <h2> 创建新设备类型 </h2></br>
+    
+	<label>设备名称:</label>
+    <input id="name" type="text">
+  
+  <br/>
+  
+  <p>添加新数据类型</p>
+  <table>
+	<tr>
+    <td><label>数据项</label></td>
+    <td><input id="data_name" type="text"></td>
+	</tr>
+	<tr>
+	<td><label>数据类型</label></td>
+    <td>
+	<select id="data_type" >
+		<option value="numberic">数值</option>
+		<option value="string">字符串</option>
+		<option value="binary">二进制</option>
+	</select>
+	</td>
+	</tr>
+	<tr>
+	<td><label>描述</label></td>
+    <td><input id="data_comment" type="text"></td>
+	</tr>
+  </table>
+  <input id="add_data" type="button" value="添加数据">
+  </br>
+  </br>
+   
+  <p>数据类型</p>
+
+	<table id="data">
+		<tr>
+			<td>数据项</td>
+			<td>数据类型</td>
+			<td>描述</td>
+			<td>操作</td>
+		</tr>
+	</table>
+   </br>
+   </br>
+	
+  <div class="actions">
+    <input type="button" value="创建新设备">
+  </div>
+
+</div>
+</form>
+
+</div>
+
+
+<%= render '/mydevices/footer' %>
+</div>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function(){
+	$("#add_data").click(function(){
+	$("#data").append('<tr>' + 
+						'<td>' + $("#data_name").val() + '</td>' +
+						'<td>' + $("#data_type").val() + '</td>' +
+						'<td>' + $("#data_comment").val() + '</td>' +
+						'<td>' + '<input class="del" type="button" value="delete">' + '</td>' +
+					  '</tr>'
+					  );
+
+	});
+});
+
+$(document).on('click', 'input.del', function(){
+       $(this).parents('tr').remove();
+});
+</script>  
+

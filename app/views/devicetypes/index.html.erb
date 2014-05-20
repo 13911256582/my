@@ -1,0 +1,25 @@
+<h1>Listing devicetypes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Metrics</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @devicetypes.each do |devicetype| %>
+  <tr>
+    <td><%= devicetype.name %></td>
+    <td><%= devicetype.metrics %></td>
+    <td><%= link_to 'Show', devicetype %></td>
+    <td><%= link_to 'Edit', edit_devicetype_path(devicetype) %></td>
+    <td><%= link_to 'Destroy', devicetype, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Devicetype', new_devicetype_path %>

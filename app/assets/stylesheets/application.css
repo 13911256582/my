@@ -1,0 +1,225 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+html 	
+{ 
+		min-width: 1000px;
+		background: #f9f9f9;
+}
+
+body	{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		text-align: center;
+		display: block;
+		background: #f9f9f9 url(site_holder.gif) top center repeat-y;
+		font: 12px Verdana, Arial, Helvetica, sans-serif;
+		}
+		
+
+
+#container
+{
+	min-height: 100%;
+	height: auto;
+	width:1000px;
+	left:50%;
+	margin-left: -500px;
+	position: absolute;
+}
+
+div.header
+{
+	width: 1000px;
+	margin: 0px;
+	height: 65px;
+	background-color:#F96;
+}
+
+div.nav
+{
+	margin: 10px;
+	padding: 0;
+	width: 175px;
+	height: 500px;
+	background-color: #CCC;
+	float:left;
+	position: relative;
+	z-index: 100;
+}
+
+div.content
+{
+	margin: 10px;
+	padding: 0;
+	width: 750px;
+	height: auto;
+	display:inline-block;
+	position: relative;
+	z-index: 10;
+}
+
+ul.header
+{
+	position: relative;
+	float: right;
+}
+
+ul.header li
+{
+	padding: 10px;
+	position: relative;
+	display: inline;
+}
+
+a.header_menu
+{
+	color:white;
+	font-size: 14px;
+}
+
+
+a.menu p
+{
+	margin: 7px;
+	padding: 0;
+	color:#FFFFFF;
+}
+
+div#footer
+{
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	width:1000px;
+	height: 150px;
+	background-color:#666;
+	position:relative; 
+	bottom: 0;
+	clear: both;
+}
+
+
+ul.footer
+{
+	margin: 0;
+	padding: 0;	
+}
+
+li.footer_top
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 100%;
+	position:relative;
+	float:left;
+}
+
+li.footer
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-size: 100%;
+	position:relative;
+}
+
+li.footer_top h4
+{
+	color:white;
+}
+
+li.footer a
+{
+	font-size:12px;
+	color:white;
+}
+
+table, th, tr, td
+{
+	border: 1px solid black;
+	width: 750px;
+	border-collapse:collapse;
+}
+
+
+tr.header
+{
+	background-color: #ECECEC;
+}
+
+tr.header th
+{
+	font-size: 14px;
+}
+
+tr.content
+{
+}
+
+
+
+a:link{text-decoration:none ; color:black ;}
+a:visited {text-decoration:none ; color:black;}
+a:hover {background-color:#F96 ; text-decoration:underline;}
+a:active {text-decoration:none ; color:black;} 
+a.device {text-decoration:underline; color: blue;}
+
+
+ul#nav { margin:0; padding:0; list-style:none; width:175px; border-bottom:1px solid #ccc; font-size:12px;}
+ul#nav li { position:relative;}
+ul#nav li ul {margin:0; padding:0; position:absolute; left: 174px; top:0; list-style:none; display:none; }
+ul#nav li a { width:163px; display:block; text-decoration:none; color:#666666; background:#fff; padding:5px; border:1px solid #ccc; border-bottom:0px}
+ul#nav li a:hover { background-color:#ddd;}
+/*解决ul在IE下显示不正确的问题aa25.cn*/
+* html ul#nav li { float:left; height:1%;}
+* html ul#nav li a { height:1%;}
+/* end */
+ul#nav li:hover ul, ul#nav li.over ul#nav { display:block;}
+
+label.devicetype{
+	float: left;
+}
+
+p.devicetype{
+	float: left;
+}
+
+input.devicetype{
+	float: left;
+	width: 150px;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+}
+
+input.button
+{
+	width: 80px;
+	height: 30px;
+	position: relative;
+	float: left;
+	margin-left: 5px;
+	padding: 0px;
+}
+
+div.steps {
+	float: left;
+	position: relative;
+	width: 700px;
+	margin: 0;
+	padding: 0;
+}

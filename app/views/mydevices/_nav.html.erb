@@ -1,0 +1,45 @@
+<div class="nav">
+<ul id="nav">
+<li><a href="">我的设备</a>
+<ul>
+    <li><a href="">创建新设备</a></li>
+   <li><a href="">注册设备</a></li>
+   <li><a href="">查看设备</a></li>
+</ul>
+</li>
+<li><a href="">我的空间</a>
+<ul>
+   <li><a href="">创建新空间</a></li>
+   <li><a href="">添加空间</a></li>
+</ul>
+</li>
+<li><a href="">我的数据</a>
+</li>
+
+<li><a href="">用户信息</a></li>
+<li><a href="">设备类型</a></li>
+<li><a href="">基础服务</a></li>
+</ul>
+</div>
+
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("nav");
+for (i=0; i<navRoot.childNodes.length; i++) {
+   node = navRoot.childNodes[i];
+   if (node.nodeName=="li") {
+    node.onmouseover=function() {
+     this.className+=" over";
+    }
+    node.onmouseout=function() {
+     this.className=this.className.replace(" over", "");
+    }
+   }
+}
+}
+}
+window.onload=startList;
+
+//--><!]]></script>
+

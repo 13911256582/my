@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>数据项名称:</b>
+  <%= @metric.name %>
+</p>
+
+<p>
+  <b>类型:</b>
+  <%= @metric.type %>
+</p>
+
+<p>
+  <b>单位:</b>
+  <%= @metric.unit %>
+</p>
+
+<p>
+  <b>精度:</b>
+  <%= @metric.precision %>
+</p>
+
+
+<%= link_to 'Edit', edit_metric_path(@metric) %> 

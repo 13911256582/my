@@ -1,0 +1,27 @@
+
+<div id="container">
+
+<%= render '/mydevices/header' %>
+
+<div class="content">
+<%= form_tag :action=>:login1 do %>
+<div class="login">
+	<h2>登录</h2>
+    <form id="login">
+    <fieldset id="inputs">
+        <input id="username" name="user[name]" type="text" placeholder="用户名" autofocus required/>   
+        <input id="password" name="user[pass]" type="password" placeholder="密码" required/>
+    </fieldset>
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="登录"/>
+		<%= link_to '忘记密码', {:controller => "users", :action => "index"}  %>
+		<%= link_to '注册', {:controller => "users", :action => "new"}  %>
+    </fieldset>
+	</form>
+</div>
+<% end %>
+</div>
+
+
+</div>
+

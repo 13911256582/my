@@ -1,0 +1,21 @@
+<h1>Listing myspaces</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @myspaces.each do |myspace| %>
+  <tr>
+    <td><%= link_to 'Show', myspace %></td>
+    <td><%= link_to 'Edit', edit_myspace_path(myspace) %></td>
+    <td><%= link_to 'Destroy', myspace, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Myspace', new_myspace_path %>

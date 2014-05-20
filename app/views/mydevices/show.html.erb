@@ -1,0 +1,29 @@
+
+
+<div id="container">
+
+<%= render 'header' %>
+
+<div class="content">
+<h3>用户名: <% @user.name %></h3>
+	<table class="device">
+		<tr class="header">
+			<th>设备名称</th>
+			<th>设备描述</th>
+			<th>操作</th>
+		</tr>
+
+		<% @user.device.each do |dev| %>
+		<% res=Device.find_by_name(dev)%>
+		<tr class="content">
+		<td><%= res.name %></td>
+		<td><%= res.description %></td>
+		<td><a href="#">删除</td>
+		</tr>
+		<% end %>		
+	</table>
+</div>
+
+<%= render 'footer' %>
+
+</div>

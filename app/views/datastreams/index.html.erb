@@ -1,0 +1,21 @@
+<h1>Listing datastreams</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @datastreams.each do |datastream| %>
+  <tr>
+    <td><%= link_to 'Show', datastream %></td>
+    <td><%= link_to 'Edit', edit_datastream_path(datastream) %></td>
+    <td><%= link_to 'Destroy', datastream, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Datastream', new_datastream_path %>

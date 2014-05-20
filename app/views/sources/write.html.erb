@@ -1,0 +1,59 @@
+<div id="container">
+<%= render '/mydevices/header' %>
+
+<%= form_for(@source) do |f| %>
+<div class="content">
+
+<h1>Write Source (Testing) </h1>
+
+<%= render 'form' %>
+
+<p> Test Data </p>
+<b> SourceID: </b>
+<p id="sourceID"><%= @source._id%></p>
+<p id="testString">
+{
+   "datastreams" : [ 
+   {
+		"name" : "dust",
+        "datapoints":[
+		{"at":"2013-04-22T00:35:43Z","value":"41"},
+        {"at":"2013-04-22T00:55:43Z","value":"84"},
+        {"at":"2013-04-22T01:15:43Z","value":"41"},
+        {"at":"2013-04-22T01:35:43Z","value":"83"}
+        ]
+	}
+   ]
+}
+</p>
+	<div class="steps">
+		<p><input id="submit" type="button" value="发送"></p>
+	</div>
+</div>
+</div>
+<% end %>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function(){
+	$("#submit").click(function(){
+		var str = $("#testString").text();
+		alert(str);
+		
+		var objstr = eval('(' + str + ')'); 
+		
+		var URL = "http://localhost:3000/sources/" + $("#sourceID").text() + ".json";
+		
+		alert(URL); 
+		
+		$.ajax({
+			type: "PUT",
+			url: URL,
+			data: str,
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function (data) {alert ("success") }, 
+			error: function (msg) {alert(msg);}
+		});
+	});
+});	
+</script>

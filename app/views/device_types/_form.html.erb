@@ -1,0 +1,44 @@
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+
+<%= form_for(@devicetype) do |f| %>
+  <% if @device_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device_type.errors.count, "error") %> prohibited this device_type from being saved:</h2>
+
+      <ul>
+      <% @device_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div>
+	<table>
+		<tr>
+			<td>数据项</td>
+			<td>数据类型</td>
+			<td>描述</td>
+		</tr>
+		<tr>
+		</tr>
+	</table>
+  </div>
+  <div class="field">
+    <%= f.label :数据项 %><br />
+    <%= f.text_field :dstemplate[name] %>
+	<%= f.label :数据类型 %><br />
+    <%= f.text_field :dstemplate[type] %>
+	<%= f.label :描述 %><br />
+    <%= f.text_field :dstemplate[comment] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

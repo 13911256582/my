@@ -1,0 +1,33 @@
+<%= form_for(@metric) do |f| %>
+  <% if @metric.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@metric.errors.count, "error") %> prohibited this metric from being saved:</h2>
+
+      <ul>
+      <% @metric.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "数据项名称" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "类型" %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label "单位" %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label "精度" %><br />
+    <%= f.text_field :precision %>
+  </div>
+  <div class="actions">
+    <input type="submit" value="保存">
+  </div>
+<% end %>

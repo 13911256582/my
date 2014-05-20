@@ -1,0 +1,22 @@
+// Place all the styles related to the mydevices controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#name, #data_name, #data_type, #data_metric, #data_precision
+{
+	margin: 0;
+	padding: 0;
+	float: left;
+	font-size: 15px;
+}
+
+#devicetype label, h3
+{
+	float: left;
+}
+
+#metadata
+{	
+	float: left;
+}
